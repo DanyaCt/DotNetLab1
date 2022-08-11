@@ -140,5 +140,14 @@ namespace DotNetLab1
                 Console.WriteLine($"{deposit.Id} - {deposit.PercentRate:0.00}%, minimal investment = {deposit.MinimalInvestment}");
             }
         }
+
+        public void PrintDepositsAndCredits(IEnumerable<(string, int)> operations)
+        {
+            Console.WriteLine("\n16. Deposits and credits:");
+            foreach (var operation in operations)
+            {
+                Console.WriteLine($"{operation.Item1} - Id: {operation.Item2}");
+            }
+        }
     }
 }

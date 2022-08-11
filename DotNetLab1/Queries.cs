@@ -219,5 +219,15 @@ namespace DotNetLab1
                         .Select(x => x.deposit)
                 );
         }
+
+        public IEnumerable<(string, int)> GetDepositsAndCredits()
+        {
+            return _context.Deposits
+                .Select(x => (nameof(Deposit), x.Id))
+                .Concat(
+                    _context.Credits
+                        .Select(y => (nameof(Credit), y.Id))
+                );
+        }
     }
 }

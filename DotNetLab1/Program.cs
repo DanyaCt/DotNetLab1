@@ -70,6 +70,10 @@ namespace DotNetLab1
             printer.PrintUnusedDeposits(
                 queries.GetUnusedDeposits()
             );
+
+            printer.PrintDepositsAndCredits(
+                queries.GetDepositsAndCredits()
+            );
         }
     }
 }
