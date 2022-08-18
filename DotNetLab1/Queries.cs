@@ -80,8 +80,7 @@ namespace DotNetLab1
                     client => client.Id,
                     deposit => deposit.ClientId,
                     (client, deposit) => (client, deposit))
-                .GroupBy(x => x.client)
-                .Select(x => x.Key)
+                    .Select(x => x.client)
                 .Distinct()
                 );
 
@@ -89,9 +88,7 @@ namespace DotNetLab1
                     client => client.Id,
                     credit => credit.ClientId,
                     (client, credit) => (client, credit))
-                .GroupBy(x => x.client)
-                .Where(x => x.Any())
-                .Select(x => x.Key);
+                .Select(x => x.client);
 
             return clientsWithCredits.Intersect(clientsWithoutDeposits);
         }
