@@ -89,9 +89,9 @@ namespace DotNetLab1
             Console.WriteLine($"Predefined: {averages.Item1:0.00} days, Actual: {averages.Item2:0.00} days");
         }
 
-        public void PrintQuantityOfClientsWithCreditNoLessThan50000UAH(int quantity)
+        public void PrintQuantityOfClientsWithCreditNoLessThanInputMoneyUAH(int quantity)
         {
-            Console.WriteLine("\n10. Quantity of clients with credits of more than 50000 UAH:");
+            Console.WriteLine("\n10. Quantity of clients with credits of more than n UAH:");
             Console.WriteLine($"Quantity of clients: {quantity}");
         }
 
@@ -105,9 +105,9 @@ namespace DotNetLab1
             }
         }
 
-        public void PrintCreditsWithRepaymentNoLess6Month(IEnumerable<Credit> credits)
+        public void PrintCreditsWithRepaymentNoLessInputMonth(IEnumerable<Credit> credits)
         {
-            Console.WriteLine("\n12. Credits with repayment no less for 6 months:");
+            Console.WriteLine("\n12. Credits with repayment no less for n months:");
             foreach (var credit in credits)
             {
                 Console.WriteLine($"Id = {credit.Id} - {credit.PercentRate:0.00}%, {credit.RepaymentDurationInMonths} months");

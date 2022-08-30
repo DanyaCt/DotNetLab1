@@ -124,7 +124,7 @@ namespace DotNetLab1
             return (average, actualAverage);
         }
 
-        public int GetQuantityOfClientsWithCreditNoLessThan50000UAH()
+        public int GetQuantityOfClientsWithCreditNoLessThanInputMoneyUAH(decimal money)
         {
             return _context.ClientsToCredits
                 .Join(_context.Credits,
@@ -136,7 +136,7 @@ namespace DotNetLab1
                     currency => currency.Id,
                     (credit, currency) => (credit.ctc, credit.credit, currency))
                 .Count(x => x.currency.Name.Equals("UAH")
-                            && x.ctc.AmountOfMoneyTaken >= 50000m);
+                            && x.ctc.AmountOfMoneyTaken >= money);
         }
 
         public ClientWithCreditMoney GetClientWithMostCreditsWithHisMoneyAndSortedMoney()
@@ -161,10 +161,10 @@ namespace DotNetLab1
             return groups.FirstOrDefault(x => x.Money.Count() == maxQuantity);
         }
 
-        public IEnumerable<Credit> GetCreditsWithRepaymentNoLess6Month()
+        public IEnumerable<Credit> GetCreditsWithRepaymentNoLessInputMonth(int month)
         {
             return _context.Credits
-                .Where(x => x.RepaymentDurationInMonths >= 6);
+                .Where(x => x.RepaymentDurationInMonths >= month);
         }
 
         public IEnumerable<Client> GetClientsWithoutDepositsAndCredits()
